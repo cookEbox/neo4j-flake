@@ -1,8 +1,6 @@
 # COMMAND for EXPORTING Cypher
 
-CALL apoc.export.cypher.all(null, {
-  stream: true,
+CALL apoc.export.cypher.all("export.cypher", {
+  format: "plain",
   useOptimizations: {type: "UNWIND_BATCH", unwindBatchSize: 20}
-})
-YIELD cypherStatements, nodes, relationships, properties, time
-RETURN cypherStatements, nodes, relationships, properties, time;
+});
